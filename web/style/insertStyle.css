@@ -1,0 +1,16 @@
+/* Style the HTML table that aligns the user input area */
+
+#insertArea {
+    margin-top: 1em;
+    margin-left: 3em;
+}
+
+#insertArea td {
+    padding: 8px;
+    font-weight: bold;
+    font-size:13px;
+}
+
+.error {
+    color:#7B241C; 
+}

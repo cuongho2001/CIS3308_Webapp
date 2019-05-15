@@ -1,0 +1,15 @@
+<!--  This is not a complete HTML page. It just has the HTML that should go in the content area of your page. -->
+
+<div style="margin-left:2em;">
+    <p>
+        Enter the id of a playlist. If that playlist is in the database, all playlist info will be displayed. 
+    </p>
+
+    <p>
+        Playlist Id:
+        <input type="text" id="playlistId"/>
+        <button onclick="findPlaylistFn(document.getElementById('playlistId').value)">Find User</button>
+    </p>
+    <div id="playlistInfoHere"></div>
+</div>
+

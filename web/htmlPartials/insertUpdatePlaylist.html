@@ -1,0 +1,35 @@
+
+
+<div id="insertArea">
+    
+    <h3> To add a new Playlist, please fill in the below boxes: </h3>
+
+    <table>
+        <tr>
+            <td>Playlist Name</td>
+            <td><input type="text"  id="playlistName" /></td>
+            <td id="playlistNameError" class="error"></td> 
+        </tr>
+        <tr>
+            <td>Creator</td>
+            <td><input type="text"  id="creator" /></td>
+            <td id="creatorError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Genre</td>
+            <td><input type="text" id="genre" /></td>
+            <td id="genreError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Date Uploaded</td>
+            <td><input type="text" id="dateUploaded" /></td>
+            <td id="dateError" class="error"></td> 
+        </tr>
+        
+            <!-- see js/insertUser.js to see the insertUser function (make sure index.html referencesinvokes the js file) -->
+            <td><button onclick="playlistCRUD.insertSave()">Save</button></td>
+            <td id="recordError" class="error"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

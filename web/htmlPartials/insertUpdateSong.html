@@ -1,0 +1,59 @@
+            
+
+            <div id="insertArea">
+
+                <h3> Add a song to the database </h3>
+
+                <table>
+                    <tr>
+                        <td>Song Name</td>
+                        <td><input type="text"  id="songName" /></td>
+                        <td id="songNameError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Artist</td>
+                        <td><input type="text"  id="creator" /></td>
+                        <td id="creatorError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Song Genre</td>
+                        <td><input type="text" id="genre" /></td>
+                        <td id="genreError" class="error"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Who uploads this song? Select</td>
+                        
+                        <td>
+                            <select id="webUserPickList"> 
+                            <!-- JS code will make ajax call to get all the roles 
+                            then populate this select tag's options with those roles -->
+                            </select>
+                        </td>
+                        
+                        <td id="webUserPickListError" class="error"></td> 
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>Song is from/for which playlist? Select</td>
+                        
+                        <td>
+                            <select id="playlistPickList">
+                            <!-- JS code will make ajax call to get all the roles 
+                            then populate this select tag's options with those roles -->
+                            </select>
+                        </td>
+                        
+                        <td id="playlistPickListError" class="error"></td> 
+                    </tr>
+                    
+                    <tr>
+                        <!-- see js/insertUser.js to see the insertUser function (make sure index.html referencesinvokes the js file) -->
+                        <td><button onclick="songCRUD.insertSave()">Save</button></td>
+                        <td id="recordError" class="error"></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </div>

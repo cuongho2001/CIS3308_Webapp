@@ -1,0 +1,17 @@
+<!--  This is not a complete HTML page. It just has the HTML that should go in the content area of your page. -->
+
+<div style="margin-left:2em;">
+    
+    <p>
+        Enter the id of a web user. If that user is in the database, all user info will be displayed. 
+    </p>
+
+    <p>
+        Web User Id:
+        <input type="text" id="webUserId"/>
+        <button onclick="findUserFn(document.getElementById('webUserId').value)">Find User</button>
+    </p>
+    
+    <div id="userInfoHere"></div>
+    
+</div>

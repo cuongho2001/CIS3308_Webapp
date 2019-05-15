@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Welcome to OnMyWay Music!</title>
+
+        <!-- This is how you link to an external style sheet. -->
+        <link href="modalStyle.css" rel="stylesheet" type="text/css" />
+        <link href="myStyle.css" rel="stylesheet" type="text/css" />
+        
+        <style>
+            h2 {
+                width: 110%;
+                font-size: 50px;
+                color: white;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+
+        <h2> FRAMEWORKS USE EXAMPLE: 2 MODAL IMAGES </h2> 
+        
+        <br> <br>
+        
+        <div style="text-align: center">
+            
+            <pre id = "text">
+                In this html, I have 2 images and, using the function modalImage in my framework, 
+                the 2 pictures now have modal mode, which opens in full on a pop-up layer on top of the page.
+
+            </pre>
+            
+            
+            
+            <div id="modalImage1" > </div>
+            
+            <br>
+            
+            <div id="modalImage2"> </div>
+            
+        </div>    
+        
+
+           
+
+        <div id="footer">
+             Cuong "Cole" Ho  </div>
+        
+        <!-- It is as if the code from this javascript file was copy/pasted here. -->
+        
+        <script src ="MakeModalImg.js"> </script>
+        
+        
+        <script>
+            
+            var onmyway = MakeModalImg("modalImage1","onmyway.jpg");
+            
+            var choppa = MakeModalImg("modalImage2","randompic.JPG");
+
+
+
+        </script>
+
+    </body>
+</html>
+

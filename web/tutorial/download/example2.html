@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Welcome to OnMyWay Music!</title>
+
+        <link href="filterTableStyle.css" rel="stylesheet" type="text/css" />
+        <link href="myStyle.css" rel="stylesheet" type="text/css" />
+        
+        <style>
+            h2 {
+                width: 120%;
+                font-size: 50px;
+                color: white;
+            }
+        </style>
+        
+    </head>
+    
+    <body>
+        <h2>2 FILTER TABLES EXAMPLE</h2>
+        
+        
+        <pre>
+               In this example, the two below tables, using my framework file (MakeFilterTable.js), will have
+            an input box attached below to it and the box will filter data on that table.
+            
+        </pre>
+
+        <div id="Table1">
+        <table id="myTable">
+            <tr class="header">
+                <th style="width:60%;">Name</th>
+                <th style="width:40%;">Country</th>
+            </tr>
+        
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Germany</td>
+            </tr>
+        
+            <tr>
+                <td>Berglunds snabbkop</td>
+                <td>Sweden</td>
+            </tr>
+        
+            <tr>
+                <td>Island Trading</td>
+                <td>UK</td>
+            </tr>
+            
+            <tr>
+                <td>Koniglich Essen</td>
+                <td>Germany</td>
+            </tr>
+            
+            <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Canada</td>
+            </tr>
+            
+            <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>Italy</td>
+            </tr>
+            
+            <tr>
+                <td>North/South</td>
+                <td>UK</td>
+            </tr>
+            
+            <tr>
+                <td>Paris specialites</td>
+                <td>France</td>
+            </tr>
+            
+        </table>
+        </div>
+        
+        <br> <br>
+        
+        
+        <div id="Table2">
+        <table id="anotherTable">
+            <tr class="header">
+                <th style="width:60%;">Artist</th>
+                <th style="width:40%;">Album</th>
+            </tr>
+        
+            <tr>
+                <td>Travis Scott</td>
+                <td>Astroworld</td>
+            </tr>
+        
+            <tr>
+                <td>Kanye West</td>
+                <td>Life of Pablo</td>
+            </tr>
+        
+            <tr>
+                <td>NAV</td>
+                <td>Bad Habits</td>
+            </tr>
+            
+            <tr>
+                <td>JuiceWRLD</td>
+                <td>Death Race For Love</td>
+            </tr>
+            
+            <tr>
+                <td>Lil Pump</td>
+                <td>Haverd Dropout</td>
+            </tr>
+            
+            <tr>
+                <td>21 Savage</td>
+                <td>I am > I was</td>
+            </tr>
+            
+            <tr>
+                <td>WHAT</td>
+                <td>WHAT</td>
+            </tr>
+            
+            <tr>
+                <td>DIE LIT</td>
+                <td>LIKE CARTI</td>
+            </tr>
+            
+        </table>
+        </div>
+        
+        <script src="MakeFilterTable.js"> </script>
+        
+        <script>
+            
+            var table1 = MakeFilterTable("Table1", "myTable", 0);
+            
+            var table2 = MakeFilterTable("Table2","anotherTable", 1);
+            
+            
+        </script>
+        
+    </body>
+    
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ONMYWAY MUSIC</title>
+        <link href="download/myStyle.css" rel="stylesheet" type="text/css" />
+        
+        <style>
+            body {
+                font-size: 150%;
+            }
+            
+            h1 {
+                font-size: 50px;
+            }
+            
+            .centerthis {
+                text-align: center;
+            }
+        </style>
+    </head>
+    
+    
+    <body>
+        
+        <h1 class="centerthis">TUTORIAL FOR FILTER TABLE AND MODAL IMAGE</h1>
+        
+        <br>
+        
+        <pre class="centerthis">
+                In this tutorial, I will go through the two functions from my framework, Modal Image and Filter Table.
+
+            Modal Image is an image that is displayed on a pop-up window that layers over your main web page. Usually a modal
+            image pops up when the user clicks on a specific image on the web page. My framework file MakeModalImg.js will 
+            make a photo of your choice to display on both the web main page and the modal window if user clicks on it.
+
+                Filter Table is a HTML table that is able to filter data within itself to display only the desired records matching
+            a specific value. Using my framework file MakeFilterTable.js will attach an input (search) box to a chosen table. The  
+            input box will hold the filter value which will filter records in the table and only display desired data.
+
+        </pre>
+        
+        <br>
+        <p class="centerthis">
+            Click here to see my example HTML page for Modal Image function where I add 2 modal images on a web page: <a href="download/example1.html">Modal Image</a>
+        </p>
+        
+        
+        <br>
+        <p class="centerthis">
+            Click here to see my example HTML page for Filter Table function where I add 2 filter tables on a web page: <a href="download/example2.html">Filter Table</a>
+        </p>
+        
+        <br>
+        <p class="centerthis">
+            Click here to download my framework (including demo HTML, JS, CSS, and example jpg pictures) : <a href="./download.zip">framework.zip</a>
+        </p>
+        
+        <br>
+        <h5 class="centerthis"> HOW TO USE: </h5>
+        <pre>
+            
+            1. Modal Image:
+            - Download the framework
+            - add MakeModalImg.js and modalStyle.css to your web page folder and make sure your html page links/refers to those 2 files.
+            - Under < script > tag, create a new var and use MakeModalImg() function, passing to the function 1. the divId which will hold BOTH the image
+            and the modal window and 2. your image file.
+                Example:
+                    var choppa = MakeModalImg("modalImage2","randompic.JPG");
+
+            - Run the webpage and BOOM! Enjoy the magic
+
+
+
+            2. Filter Table:
+            - Download the framework
+            - add MakeFilterTable.js and filterTableStyle.css to your web page folder and make sure your html page links/refers to those 2 files.
+            - Under < script > tag, create a new var and use MakeFilterTable() function, passing to the function 1. the divId which will hold BOTH the HTML table
+            and the filter input box,  2. tableId of your chosen HTML table and 3. the column index (starting from 0) that dictates which record get displayed 
+            and which get hidden.
+                Example:
+                    var table1 = MakeFilterTable("Table1", "myTable", 0);
+
+            - Run the webpage and BOOM! Enjoy the magic
+
+        </pre>
+        
+        <br>
+        <h5 class="centerthis"> HOW THEY WORK: </h5>
+        
+            <pre>
+                1. Modal Image
+                
+                First off, we need to retrieve the HTML element of the container (div) that will hold our results. This container will do lots of stuff
+                in this function and eventually is the final object that we return back to the main HTML page.
+                        
+                        var container = document.getElementById(Id);
+                    
+                Then, the function creates a <'img'> tag for our image which then be displayed on the page. We add id, className and src attributes to it
+                and then get the container to append the image.
+                        
+                        var myImage = document.createElement("img");
+                        myImage.id = "oriImg_" + imageSrc;
+                        myImage.className = "image";
+                        myImage.src = imageSrc;
+                        container.appendChild(myImage);
+                        
+                Then we create a < div > container for the modal window. This modal window will need an Id, className, a span for the close window button,
+                and of course the image in modal mode. We append this modal container to the main container.
+
+                        var modal = document.createElement("div");
+                        container.appendChild(modal);
+                        modal.id = "myModalfor_" + Id;
+                        modal.className = "modal";
+        
+                        modal.innerHTML = "< span id ='closefor_" + Id + "' class='close'>&times;< /span > "
+                                + " < img class='modal-content' id='img01_" + imageSrc + "' > ";
+
+                Now we only need to set onClick functions for the web page image and for the close button on modal window. When we click on the image,
+                it should pop up a modal window with that picture. When we click on close button, it should close the modal window. This is as easy as   
+                modifying css styles of the object when clicked on.
+
+                        var oriImg = document.getElementById("oriImg_" + imageSrc);
+            
+                        var modalImg = document.getElementById("img01_" + imageSrc);
+        
+                        oriImg.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = oriImg.src;
+                        };
+
+                        // Get the < span > element that closes the modal
+                        var closeSpan = document.getElementById("closefor_"+ Id);
+
+                        // When the user clicks on < span > (x), close the modal
+                        closeSpan.onclick = function() { 
+                            modal.style.display = "none";
+                        };
+                
+                Finally, the main container is retunred back to the HTML page, so that it shows on the web.
+
+                        return container;
+
+            </pre>
+                
+        <br>
+        
+            <pre>
+                2. Filter Table
+
+                First, we retrieve the div container and the table from HTML by using getElementById.
+
+                        var container = document.getElementById(divId);
+                        var table = document.getElementById(tableId);
+
+                Create an input box that will be attached under the table (using appendChild to attach). Add essentials attributes for this
+                filter box, and those are: 1. type  2. id   3. placeholder  4.onkeyup function. onkeyup function is a function that JS will run
+                as long as there is some value inside the input box. This function should be find() where we pass in the filterId, tableId, and
+                columnNum.
+
+                        var filterBox = document.createElement("input");
+                        container.appendChild(filterBox);
+                        filterBox.type="text";
+                        filterBox.id = "filterfor_" + tableId;
+                        filterBox.placeholder = "Search for...";
+                        filterBox.onkeyup = function(){
+                            find(filterBox.id, tableId, columnNum);
+                        };
+                
+                There is a bit going on in find() function. But essentially it will get the HTML elements and loop through all table rows,
+                find those data that don't match the search query and then hide them.
+                        
+                        function find(filterId, tableId, columnNum) {
+                            var input, filter, table,  tr, td, i, txtValue;
+        
+        
+                            input = document.getElementById(filterId);
+                            filter = input.value.toUpperCase();         //convert filter value to all upper case to compare with other table data.
+                            table = document.getElementById(tableId);
+                            tr = table.getElementsByTagName("tr");
+
+                            // Loop through all table rows, and hide those who don't match the search query
+                            for (i = 0; i < tr.length; i++) {
+                                td = tr[i].getElementsByTagName("td")[columnNum];
+                                if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }    
+                        }
+    
+                Finally we return the main container to the HTML page.
+
+                        return container;
+            
+            </pre>
+        
+        <br>
+        
+
+        <h3> References: </h3>
+        
+        <p class="centerthis">
+            
+            1. Modal Image: <a href="https://www.w3schools.com/howto/howto_css_modal_images.asp">W3School How To</a> . The article is definitely simple
+            and straightforward, guiding through everything you need to create a modal image.
+            
+        </p>
+        
+        <p class="centerthis">
+            2. Filter Table: <a href="https://www.w3schools.com/howto/howto_js_filter_table.asp">W3School How To</a> . The article shows how to transform
+            a normal input box to a filter input box that will filter data of a specified table. However, I modify it a bit in my framework so that users 
+            can use the function with more convenience. Users only need to pass the table to the function and it will automatically create one for you.
+        </p>
+    </body>
+</html>

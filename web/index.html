@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>OnMyWay Music</title>
+
+        <!-- This is how you link to an external style sheet. -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/dropDownStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/listStyle.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/insertStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <!-- The style sheet has pageTitle floated left -->
+            <div id="pageTitle">
+                OnMyWay Music
+            </div>
+
+            <div id="nav">
+                <a onclick = " ajaxFillId ('htmlPartials/homeContent.html', 'content' )">Home</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a onclick="toggle('allAccounts', 380)">Account</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a onclick = "toggle('allTables', 230)">Explore</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a onclick = "toggle('allFind', 110)">Find</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a onclick = " ajaxFillId ('htmlPartials/blogContent.html', 'content' )">Blog</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                
+            </div>
+            
+            <div class="dropDown" id="allTables">
+                <a onclick = " userCRUD.list('content')">Users</a> <br/>
+                <a onclick = "playlistCRUD.list('content')">Playlists</a> <br/>
+                <a onclick = "songCRUD.list('content')">Songs</a> <br/>
+            </div>
+            
+            <div class="dropDown" id="allAccounts">
+                <a onclick = "ajaxFillId('htmlPartials/logon.html' , 'content')"> Log In </a> <br/>
+                <a onclick = "account.logout()"> Log off </a> <br/>
+                <a onclick = "account.profile()">Profile</a> <br/>
+            </div>
+            
+            <div class="dropDown" id="allFind">
+                <a onclick = " ajaxFillId ('htmlPartials/findUser.html', 'content' )">User</a> <br/>
+                <a onclick = "ajaxFillId ('htmlPartials/findPlaylist.html', 'content' )">Playlist</a> <br/>
+                <a onclick = "">Song</a> <br/>
+            </div>
+            
+            <div class="stopFloat"></div>
+        </div>
+        
+        
+        <div id="content">  
+
+            <!-- The content DOM element is a placeholder that will get filled by JavaScript -->
+
+        </div> <!-- content. [[Keep track of nesting]] -->
+
+        <div id="footer">
+             Cuong "Cole" Ho 
+        </div>
+        
+        <!-- It is as if the code from this javascript file was copy/pasted here. -->
+        <!-- With our coding convention, we name the JS file the same as the single function declared inside it (similar to java). -->
+
+        
+        <script src="js/ajaxFillId.js"></script>
+        <script src="js/ajax.js"></script>
+        
+        <script src="js/account.js"></script>
+        <script src="js/buildTable.js"></script>
+        <script src="js/userCRUD.js"></script>
+        <script src="js/makePickList.js"></script>
+        
+        <script src="js/playlistCRUD.js"></script> 
+        <script src="js/songCRUD.js"></script>
+        
+        <script src="js/findUser.js"></script>
+        <script src="js/findPlaylist.js"></script>
+        
+        <script>
+            
+               // Make sure initial page load has home content displayed. 
+            // First parameter is URL to call (ajax call). 
+            // Second parameter is id of DOM element where you want the ajax response to be placed (or error message written).
+            ajaxFillId('htmlPartials/homeContent.html', 'content');
+        
+            
+            
+            function toggle(id, right) {
+
+                // get reference to the dropdown (parent) that is to be opened or closed
+                var ele = document.getElementById(id);
+
+                // when one dropdown is clicked, make sure to close any other ones
+                // that the user may have left open.
+                var dropdowns = document.getElementsByClassName("dropDown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i] !== ele) {
+                        dropdowns[i].style.right = "-500px";  // set it off screen to right so animates next opening
+                        dropdowns[i].style.visibility = "hidden";
+                    }
+                }
+
+                // Tip: JS doesnt understand the initial CSS values (the values 
+                // set by style sheet instead of by JS), unless you use a function that is 
+                // something like "getComputedStyle". But you can avoid this by having the 
+                // if condition test for the way CSS does NOT have it initially set. 
+                // (In other words, do not reverse the order of the if/else block.)                      
+                if (ele.style.visibility === "visible") {
+                    ele.style.right = "-500px"; // set it off screen to right so animates next opening
+                    ele.style.visibility = "hidden";
+
+                } else {
+                    ele.style.visibility = "visible";
+                    ele.style.right = right + "px";
+                }
+            } // end function toggle
+
+
+        </script>
+
+    </body>
+</html>
+
