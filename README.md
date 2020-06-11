@@ -1,2 +1,2 @@
 # CIS3308_Webapp
-Complete Web App Project that I built from Temple's CIS 3308 Web App Programming course.
+A Music-themed Web App Project that I built at Temple's Web App Programming course.
